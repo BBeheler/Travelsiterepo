@@ -1,53 +1,52 @@
-ch<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Travel Recommendation Website</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendations</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
 
-<nav>
-  <section id="search-section">
-  <input 
-    type="text" 
-    id="searchInput" 
-    placeholder="Search destinations (beach, temple, Japan)">
-  <button onclick="searchDestination()">Search</button>
-</section>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="contact.html">Contact Us</a></li>
-  </ul>
-</nav>
-  
-<header>
-  <h1>Discover Your Next Destination</h1>
-  <p>Your personalized guide to unforgettable travel experiences.</p>
-</header>
+    <!-- Home Introduction -->
+    <header>
+        <h1>Welcome to Your Ultimate Travel Guide!</h1>
+        <p>Explore the best beaches, temples, and destinations around the world.</p>
+    </header>
 
-<section id="beach">
-  <h2>🏖 Beach Recommendations</h2>
-  <img src="images/beach1.jpg" alt="Beach 1">
-  <img src="images/beach2.jpg" alt="Beach 2">
-  <p>Relax on stunning beaches with crystal-clear waters and golden sands.</p>
-</section>
+    <!-- Beach Recommendation -->
+    <section>
+        <h2>Beach Recommendations</h2>
+        <div class="images">
+            <img src="images/beach1.jpg" alt="Beach 1">
+            <img src="images/beach2.jpg" alt="Beach 2">
+        </div>
+    </section>
 
-<section id="temple">
-  <h2>🛕 Temple Recommendations</h2>
-  <img src="images/temple1.jpg" alt="Temple 1">
-  <img src="images/temple2.jpg" alt="Temple 2">
-  <p>Explore ancient temples rich in culture, history, and spirituality.</p>
-</section>
+    <!-- Temple Recommendation -->
+    <section>
+        <h2>Temple Recommendations</h2>
+        <div class="images">
+            <img src="images/temple1.jpg" alt="Temple 1">
+            <img src="images/temple2.jpg" alt="Temple 2">
+        </div>
+    </section>
 
-<section id="country">
-  <h2>🌍 Explore by Country: Japan</h2>
-  <img src="images/country1.jpg" alt="Japan 1">
-  <img src="images/country2.jpg" alt="Japan 2">
-  <p>Experience Japan’s unique blend of tradition and modern innovation.</p>
-</section>
-
-<script src="script.js"></script>
+    <!-- Country Recommendation -->
+    <section>
+        <h2>Recommendations by Country</h2>
+        <div class="images">
+            <img src="images/country1.jpg" alt="Country 1">
+            <img src="images/country2.jpg" alt="Country 2">
+        </div>
+    </section>
 </body>
 </html>
