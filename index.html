@@ -52,5 +52,71 @@
         <!-- Country cards will be dynamically inserted here -->
     </div>
 </section>
+    <script>
+    // Fetch api.json
+    fetch('api.json')
+    .then(response => response.json())
+    .then(data => {
+        displayBeaches(data.beaches);
+        displayTemples(data.temples);
+        displayCountries(data.countries);
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+
+    function createCard(item) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <img src="${item.imageUrl}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+        `;
+        return card;
+    }
+
+    function displayBeaches(beaches) {
+        const container = document.getElementById('beachContainer');
+        beaches.forEach(beach => {
+            container.appendChild(createCard(beach));
+        });
+    }
+
+    function displayTemples(temples) {
+        const container = document.getElementById('templeContainer');
+        temples.forEach(temple => {
+            container.appendChild(createCard(temple));
+        });
+    }
+
+    function displayCountries(countries) {
+        const container = document.getElementById('countryContainer');
+        countries.forEach(country => {
+            country.cities.forEach(city => {
+                container.appendChild(createCard(city));
+            });
+        });
+    }
+
+    // Search and Reset functions for dynamic cards
+    function searchRecommendations() {
+        const keyword = document.getElementById('searchInput').value.toLowerCase();
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            if (text.includes(keyword)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function resetSearch() {
+        document.getElementById('searchInput').value = '';
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => card.style.display = 'block');
+    }
+    </script>
 </body>
 </html>
