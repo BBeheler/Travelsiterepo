@@ -1,4 +1,6 @@
-
+/* ===========================
+   BODY
+   =========================== */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -15,14 +17,28 @@ body {
   color: #333;
 }
 
-
+/* ===========================
+   HEADER
+   =========================== */
 header {
   background-color: rgba(30, 144, 255, 0.9);
   color: white;
-  text-align: left;
-  padding: 30px 50px;
+  text-align: center; /* center header text */
+  padding: 50px 20px;
 }
 
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+}
+
+/* ===========================
+   NAVBAR
+   =========================== */
 nav {
   background-color: rgba(70, 130, 180, 0.9);
   display: flex;
@@ -42,15 +58,17 @@ nav {
   text-decoration: underline;
 }
 
-
-.search-bar input[type="text"] {
+/* ===========================
+   SEARCH BAR
+   =========================== */
+.nav-search input[type="text"] {
   padding: 5px 10px;
   border-radius: 5px;
   border: none;
   outline: none;
 }
 
-.search-bar button {
+.nav-search button {
   padding: 5px 10px;
   border-radius: 5px;
   border: none;
@@ -60,7 +78,7 @@ nav {
   margin-left: 5px;
 }
 
-.search-bar button:hover {
+.nav-search button:hover {
   background-color: #104e8b;
 }
 
@@ -78,36 +96,40 @@ nav {
   flex: 1;
 }
 
-
 h2 {
   color: #1e90ff;
+  text-align: center;
 }
 
-
+/* ===========================
+   DESTINATION GRID
+   =========================== */
 .destination-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  padding: 40px 80px;
+  gap: 20px;
+  padding: 20px 50px;
+  justify-items: center; /* center cards in each grid cell */
 }
 
 /* Destination cards */
 .destination-card {
   background-color: white;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   aspect-ratio: 1 / 1;
+  max-width: 250px; /* restrict card size */
   text-align: center;
 }
 
 .destination-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .destination-card img {
@@ -118,30 +140,35 @@ h2 {
 
 .destination-card h3 {
   color: #1e90ff;
-  margin: 12px 10px 5px;
-  font-size: 1.3rem;
+  margin: 10px 5px 5px;
+  font-size: 1.1rem;
 }
 
 .destination-card p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #555;
-  padding: 0 15px 15px;
+  padding: 0 10px 10px;
   overflow: hidden;
 }
 
-
+/* ===========================
+   FOOTER
+   =========================== */
 footer {
   background-color: rgba(30, 144, 255, 0.9);
   color: white;
-  text-align: left;
+  text-align: center;
   padding: 20px 50px;
   margin-top: 40px;
 }
 
+/* ===========================
+   RESPONSIVE GRID
+   =========================== */
 @media (max-width: 1100px) {
   .destination-grid {
     grid-template-columns: repeat(2, 1fr);
-    padding: 40px 50px;
+    padding: 20px 30px;
   }
 }
 
@@ -158,14 +185,12 @@ footer {
     padding-right: 20px;
   }
 
-  .container {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 600px) {
   .destination-grid {
     grid-template-columns: 1fr;
-    padding: 30px 20px;
+    padding: 20px 20px;
+  }
+
+  .destination-card {
+    max-width: 100%;
   }
 }
