@@ -25,6 +25,7 @@
   <div class="nav-search">
     <input type="text" id="searchInput" placeholder="Search destinations...">
     <button id="searchBtn">Search</button>
+    <button id="clearBtn">Clear</button> <!-- Added clear button -->
   </div>
 </nav>
 
@@ -72,23 +73,26 @@
       allDestinations.push(...data.beaches);
 
       // Show ONLY first 4 on homepage
-      const featured = allDestinations.slice(0, 4);
-      const grid = document.getElementById('destinationGrid');
-
-      featured.forEach(dest => {
-        const card = document.createElement('div');
-        card.className = 'destination-card';
-        card.innerHTML = `
-          <img src="${dest.imageUrl}" alt="${dest.name}">
-          <h3>${dest.name}</h3>
-          <p>${dest.description}</p>
-        `;
-        grid.appendChild(card);
-      });
+      displayFeaturedDestinations(allDestinations.slice(0, 4));
 
     } catch (error) {
       console.error('Error loading destinations:', error);
     }
+  }
+
+  function displayFeaturedDestinations(destinations) {
+    const grid = document.getElementById('destinationGrid');
+    grid.innerHTML = ""; // clear previous cards
+    destinations.forEach(dest => {
+      const card = document.createElement('div');
+      card.className = 'destination-card';
+      card.innerHTML = `
+        <img src="${dest.imageUrl}" alt="${dest.name}">
+        <h3>${dest.name}</h3>
+        <p>${dest.description}</p>
+      `;
+      grid.appendChild(card);
+    });
   }
 
   loadDestinations();
@@ -129,6 +133,15 @@
     }
 
     searchResults.style.display = "block";
+  });
+
+  /* CLEAR FUNCTION */
+  const clearBtn = document.getElementById("clearBtn");
+  clearBtn.addEventListener("click", function () {
+    searchInput.value = "";                  // clear input
+    resultsGrid.innerHTML = "";              // clear search results
+    searchResults.style.display = "none";    // hide search results
+    displayFeaturedDestinations(allDestinations.slice(0, 4)); // restore homepage cards
   });
 </script>
 
