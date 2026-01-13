@@ -1,55 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destination Station - Contact Us</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #1e90ff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 50px;
+    }
+
+    nav .nav-links a {
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Page Header */
+    <header>
+      <h1>Explore the World with Destination Station</h1>
+      <p>Discover top destinations, beaches, temples, and countries worldwide.</p>
+  </header>
+
+    /* Contact Section */
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      padding: 30px 50px;
+    }
+
+    /* Contact Form */
+    
+    .contact-form {
+      flex: 1 1 400px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .contact-form h2 {
+      margin-top: 0;
+      color: #1e90ff;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .contact-form button {
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #0d6efd;
+    }
+
+    /* Sidebar Info */
+    .contact-info {
+      flex: 1 1 300px;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .contact-info h3 {
+      color: #1e90ff;
+    }
+
+    .contact-info p {
+      margin: 10px 0;
+    }
+
+    .social-icons a {
+      text-decoration: none;
+      color: #1e90ff;
+      margin-right: 15px;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #0d6efd;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .faq-section h2 {
+      color: #1e90ff;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .faq-item {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .faq-item h4 {
+      margin: 0 0 10px 0;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .faq-item h4::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.active h4::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-item p {
+      display: none;
+      margin: 0;
+    }
+
+    .faq-item.active p {
+      display: block;
+      margin-top: 10px;
+    }
+
+    /* Availability */
+    .availability {
+      margin-top: 30px;
+      background-color: #e6f0ff;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .availability h3 {
+      margin-top: 0;
+      color: #1e90ff;
+    }
+
+    .availability p {
+      margin: 5px 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1e90ff;
+      color: white;
+      text-align: left;
+      padding: 20px 50px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-    <div class="nav-left">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact Us</a>
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
     </div>
-    <div class="nav-right">
-        <input type="text" id="searchInput" placeholder="Search recommendations...">
-        <button onclick="searchRecommendations()">Search</button>
-        <button onclick="resetSearch()">Reset</button>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you! Fill out the form or check our FAQs below.</p>
+  </header>
+
+  <!-- Contact Section -->
+  <div class="contact-container">
+    <!-- Form -->
+    <div class="contact-form">
+      <h2>Send Us a Message</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="text" placeholder="Subject" required>
+        <textarea rows="5" placeholder="Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </div>
-</nav>
 
-       <!-- Hero Section with Inline Background -->
-<header class="hero" 
-        style="background-image: url('https://uploads.onecompiler.io/44872r4rd/4486yzjvy/beach%20background.jpg'); 
-               background-size: cover; 
-               background-position: center; 
-               background-repeat: no-repeat; 
-               height: 100vh; 
-               min-height: 100vh;
-               width: 100%;
-               display: flex; 
-               align-items: center; 
-               justify-content: center; 
-               position: relative;">
-    <!-- Overlay -->
-    <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.4); z-index:0;"></div>
+    <!-- Info / Availability -->
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <p><strong>Email:</strong> contact@destinationstation.com</p>
+      <p><strong>Phone:</strong> +1 234 567 890</p>
+      <p><strong>Address:</strong> 123 Travel Street, Adventure City, USA</p>
 
-    <section>
-        <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
+      <div class="availability">
+        <h3>Business Hours</h3>
+        <p>Monday – Friday: 9 AM – 6 PM</p>
+        <p>Saturday: 10 AM – 4 PM</p>
+        <p>Sunday: Closed</p>
+      </div>
 
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-square"></i></a>
+        <a href="#"><i class="fab fa-instagram-square"></i></a>
+        <a href="#"><i class="fab fa-twitter-square"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
 
-            <label for="message">Message:</label><br>
-            <textarea id="message" name="message" rows="5" required></textarea><br><br>
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
 
-            <input type="submit" value="Send">
-        </form>
-    </section>
+    <div class="faq-item">
+      <h4>How do I book a trip?</h4>
+      <p>You can explore destinations on our website and contact us through the form to plan your trip.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Do you offer travel guides?</h4>
+      <p>Yes! We provide detailed travel guides for most of the destinations listed on our site.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Can I get personalized travel recommendations?</h4>
+      <p>Absolutely! Reach out through the contact form and we’ll help you plan your perfect trip.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Destination Station. All rights reserved.
+  </footer>
+
+  <!-- FAQ Accordion Script -->
+  <script>
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      item.querySelector('h4').addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
