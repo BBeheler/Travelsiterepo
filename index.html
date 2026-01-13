@@ -118,6 +118,15 @@
       font-size: 0.9rem;
     }
 
+    /* Responsive */
+    @media(max-width:768px){
+      nav{flex-direction: column;padding:15px 20px;}
+      .nav-search{margin-top:10px;width:100%;}
+      .nav-search input{flex:1;width:100%;}
+      header h1{font-size:2rem;}
+      header p{font-size:1rem;}
+      .destination-grid{padding:20px;}
+    }
   </style>
 </head>
 <body>
@@ -139,21 +148,22 @@
     <p>Discover top destinations, beaches, temples, and countries worldwide.</p>
   </header>
 
-  <section class="destination-grid" id="destinationGrid">
-    <!-- Destination cards will load here from api.json -->
-  </section>
+  <!-- Grid to hold all destinations -->
+  <section class="destination-grid" id="destinationGrid"></section>
 
   <footer>
     &copy; 2026 Destination Station. All rights reserved.
   </footer>
 
   <script>
+    let allDestinations = []; // Store all loaded destinations for search
+
+    // Load destinations from api.json
     fetch('api.json')
-      .then(response => response.json())
+      .then(res => res.json())
       .then(data => {
         const grid = document.getElementById('destinationGrid');
 
-        // Helper function to create a card
         function createCard(name, description, imageUrl) {
           const card = document.createElement('div');
           card.className = 'destination-card';
@@ -167,24 +177,85 @@
           grid.appendChild(card);
         }
 
-        // Load cities from countries
+        // Helper to push destination to allDestinations
+        function pushDestination(dest) { allDestinations.push(dest); }
+
+        // Add cities
         data.countries.forEach(country => {
           country.cities.forEach(city => {
             createCard(city.name, city.description, city.imageUrl);
+            pushDestination(city);
           });
         });
 
-        // Load temples
+        // Add temples
         data.temples.forEach(temple => {
           createCard(temple.name, temple.description, temple.imageUrl);
+          pushDestination(temple);
         });
 
-        // Load beaches
+        // Add beaches
         data.beaches.forEach(beach => {
           createCard(beach.name, beach.description, beach.imageUrl);
+          pushDestination(beach);
         });
       })
       .catch(err => console.error('Error loading destinations:', err));
+
+    // SEARCH FUNCTIONALITY
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+
+    function normalize(str){ return str.toLowerCase(); }
+
+    searchBtn.addEventListener('click', () => {
+      const query = normalize(searchInput.value.trim());
+      const grid = document.getElementById('destinationGrid');
+      grid.innerHTML = ''; // Clear current grid
+
+      if(!query){
+        // If search empty, reload all
+        allDestinations.forEach(dest => {
+          const card = document.createElement('div');
+          card.className = 'destination-card';
+          card.innerHTML = `
+            <img src="${dest.imageUrl}" alt="${dest.name}">
+            <div class="card-content">
+              <h3>${dest.name}</h3>
+              <p>${dest.description}</p>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+        return;
+      }
+
+      const results = allDestinations.filter(dest => 
+        normalize(dest.name).includes(query) || normalize(dest.description).includes(query)
+      );
+
+      if(results.length === 0){
+        grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#555;">No results found for "${searchInput.value}"</p>`;
+      } else {
+        results.forEach(dest => {
+          const card = document.createElement('div');
+          card.className = 'destination-card';
+          card.innerHTML = `
+            <img src="${dest.imageUrl}" alt="${dest.name}">
+            <div class="card-content">
+              <h3>${dest.name}</h3>
+              <p>${dest.description}</p>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      }
+    });
+
+    // Optional: allow pressing Enter to search
+    searchInput.addEventListener('keypress', e => {
+      if(e.key === 'Enter') searchBtn.click();
+    });
   </script>
 
 </body>
