@@ -23,12 +23,12 @@
         {
           "name": "Tokyo, Japan",
           "imageUrl": "images/tokyo.jpg",
-          "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture."
+          "description": "A bustling metropolis where ancient traditions meet cutting-edge modernity, featuring stunning temples, vibrant neighborhoods, delicious cuisine, cherry blossoms in spring, and endless cultural experiences."
         },
         {
           "name": "Kyoto, Japan",
           "imageUrl": "images/kyoto.jpg",
-          "description": "Known for its historic temples, gardens, and traditional tea houses."
+          "description": "A city of timeless beauty, famous for its historic temples, serene gardens, traditional tea houses, geisha districts, and seasonal cherry blossoms that capture the essence of Japanese culture."
         }
       ]
     },
