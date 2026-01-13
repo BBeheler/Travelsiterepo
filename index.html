@@ -134,24 +134,95 @@
       color: #555;
     }
 
-    /* SEARCH RESULTS */
-    #searchResults {
-      padding: 40px 50px;
-      background-color: #f9f9f9;
+    <!-- SEARCH RESULTS -->
+<section id="searchResults" style="display:none;">
+  <h2>Search Results</h2>
+  <div id="resultsGrid" class="destination-grid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2026 Destination Station. All rights reserved.
+</footer>
+
+<!-- JAVASCRIPT SEARCH (fetch from api.json) -->
+<script>
+  // ----- Initialize destinations array -----
+  let destinations = [];
+
+  // ----- Fetch destinations from api.json -----
+  fetch('api.json')
+    .then(response => {
+      if (!response.ok) throw new Error('Failed to fetch destinations');
+      return response.json();
+    })
+    .then(data => {
+      destinations = data; // store fetched data
+      console.log('Destinations loaded:', destinations);
+
+      // Optionally, display all destinations on page load
+      const resultsGrid = document.getElementById("resultsGrid");
+      destinations.forEach(dest => {
+        const card = document.createElement("div");
+        card.className = "destination-card";
+        card.innerHTML = `<h3>${dest.name}</h3><p>${dest.description}</p>`;
+        resultsGrid.appendChild(card);
+      });
+      document.getElementById("searchResults").style.display = "block";
+    })
+    .catch(error => {
+      console.error('Error loading destinations:', error);
+    });
+
+  // ----- Get DOM elements -----
+  const searchBtn = document.getElementById("searchBtn");
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+  const resultsGrid = document.getElementById("resultsGrid");
+
+  // ----- Helper function to normalize input -----
+  function normalizeInput(input) {
+    let normalized = input.trim().toLowerCase();
+    if (normalized.endsWith("s")) normalized = normalized.slice(0, -1);
+    return normalized;
+  }
+
+  // ----- Search button click handler -----
+  searchBtn.addEventListener("click", function() {
+    if (destinations.length === 0) {
+      alert("Destinations are still loading. Please try again in a moment.");
+      return;
     }
 
-    #searchResults h2 {
-      color: #1e90ff;
-      margin-bottom: 25px;
-      font-size: 1.8rem;
-      text-align: center;
+    const query = normalizeInput(searchInput.value);
+    resultsGrid.innerHTML = ""; // clear previous results
+
+    if (query === "") {
+      alert("Please enter a keyword to search.");
+      return;
     }
 
-    #searchResults p {
-      text-align: center;
-      font-size: 1.1rem;
-      color: #555;
+    // Filter destinations based on keywords
+    const filtered = destinations.filter(dest =>
+      dest.keywords.some(keyword => normalizeInput(keyword) === query)
+    );
+
+    // Display results
+    if (filtered.length === 0) {
+      resultsGrid.innerHTML = `<p>No results found for '${searchInput.value}'</p>`;
+    } else {
+      filtered.forEach(dest => {
+        const card = document.createElement("div");
+        card.className = "destination-card";
+        card.innerHTML = `<h3>${dest.name}</h3><p>${dest.description}</p>`;
+        resultsGrid.appendChild(card);
+      });
     }
+
+    // Show results section
+    searchResults.style.display = "block";
+  });
+</script>
 
     /* FOOTER */
     footer {
