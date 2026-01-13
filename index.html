@@ -1,122 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Recommendations</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destination Station</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* GENERAL STYLING */
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+    nav {
+      background-color: #1e90ff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .nav-links a {
+      color: white;
+      margin-right: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    nav .nav-links a:hover {
+      text-decoration: underline;
+      color: #ffd700;
+    }
+
+    /* SEARCH BAR */
+    .nav-search {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .nav-search input {
+      padding: 8px 15px;
+      border: none;
+      outline: none;
+      width: 200px;
+      font-size: 0.95rem;
+    }
+
+    .nav-search button {
+      padding: 8px 15px;
+      border: none;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .nav-search button:hover {
+      background-color: #0d6efd;
+    }
+
+    /* HEADER */
+    header {
+      text-align: center;
+      padding: 80px 20px 50px 20px;
+      background: linear-gradient(135deg, #1e90ff 0%, #00c6ff 100%);
+      color: white;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* DESTINATIONS GRID */
+    .destination-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 40px 50px;
+    }
+
+    .destination-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .destination-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
+
+    .destination-card h3 {
+      color: #1e90ff;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .destination-card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* SEARCH RESULTS */
+    #searchResults {
+      padding: 40px 50px;
+      background-color: #f9f9f9;
+    }
+
+    #searchResults h2 {
+      color: #1e90ff;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    #searchResults p {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #1e90ff;
+      color: white;
+      text-align: center;
+      padding: 25px 50px;
+      margin-top: 50px;
+      font-size: 0.9rem;
+    }
+
+    /* MEDIA QUERIES */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 15px 20px;
+      }
+
+      .nav-search {
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      .nav-search input {
+        flex: 1;
+        width: 100%;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+  </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-    <div class="nav-left">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact Us</a>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
     </div>
-    <div class="nav-right">
-        <input type="text" id="searchInput" placeholder="Search recommendations...">
-        <button onclick="searchRecommendations()">Search</button>
-        <button onclick="resetSearch()">Reset</button>
+
+    <div class="nav-search">
+      <input type="text" id="searchInput" placeholder="Search destinations...">
+      <button id="searchBtn">Search</button>
     </div>
-</nav>
+  </nav>
 
-   <!-- Hero Section with Inline Background -->
-<header class="hero" 
-        style="background-image: url('https://uploads.onecompiler.io/44872r4rd/4486yzjvy/beach%20background.jpg'); 
-               background-size: cover; 
-               background-position: center; 
-               background-repeat: no-repeat; 
-               height: 100vh; 
-               min-height: 100vh;
-               width: 100%;
-               display: flex; 
-               align-items: center; 
-               justify-content: center; 
-               position: relative;">
-    <!-- Overlay -->
-    <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.4); z-index:0;"></div>
+  <!-- HEADER -->
+  <header>
+    <h1>Explore the World with Destination Station</h1>
+    <p>Discover top destinations, beaches, temples, and countries worldwide.</p>
+  </header>
 
-    <!-- Text -->
-    <div class="hero-text" style="position: relative; z-index:1; text-align:center; color:white;">
-        <h1>Welcome to Your Ultimate Travel Guide!</h1>
-        <p>Explore the best beaches, temples, and destinations around the world.</p>
+  <!-- DESTINATIONS GRID -->
+  <section class="destination-grid">
+    <div class="destination-card">
+      <h3>Bali, Indonesia</h3>
+      <p>Tropical paradise with beaches, jungles, and vibrant culture.</p>
     </div>
-</header>
+    <div class="destination-card">
+      <h3>Paris, France</h3>
+      <p>The city of lights, romance, and iconic landmarks like the Eiffel Tower.</p>
+    </div>
+    <div class="destination-card">
+      <h3>Angkor Wat, Cambodia</h3>
+      <p>Majestic temple complex and one of the largest religious monuments in the world.</p>
+    </div>
+  </section>
 
-    <!-- Beach Recommendations -->
-    <section>
-        <h2>Beach Recommendations</h2>
-        <div id="beachContainer" class="cards"></div>
-    </section>
+  <!-- SEARCH RESULTS -->
+  <section id="searchResults" style="display:none;">
+    <h2>Search Results</h2>
+    <div id="resultsGrid" class="destination-grid"></div>
+  </section>
 
-    <!-- Temple Recommendations -->
-    <section>
-        <h2>Temple Recommendations</h2>
-        <div id="templeContainer" class="cards"></div>
-    </section>
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 Destination Station. All rights reserved.
+  </footer>
 
-    <!-- Country Recommendations -->
-    <section>
-        <h2>Recommendations by Country</h2>
-        <div id="countryContainer" class="cards"></div>
-    </section>
+  <!-- JAVASCRIPT SEARCH -->
+  <script>
+    const destinations = [
+      { name: "Paris, France", type: "city", description: "The city of lights, romance, and iconic landmarks like the Eiffel Tower.", keywords: ["paris","city","romance","france"] },
+      { name: "Bali, Indonesia", type: "beach", description: "A tropical paradise with pristine beaches, lush jungles, and vibrant culture.", keywords: ["bali","beach","beaches","tropical","indonesia"] },
+      { name: "Tokyo, Japan", type: "city", description: "A perfect blend of tradition and modernity with bustling streets and culture.", keywords: ["tokyo","city","temple","temples","japan"] },
+      { name: "Angkor Wat, Cambodia", type: "temple", description: "A majestic temple complex and one of the largest religious monuments in the world.", keywords: ["angkor wat","temple","temples","cambodia"] },
+      { name: "Maldives", type: "beach", description: "Pristine white sand beaches and crystal-clear waters.", keywords: ["maldives","beach","beaches","island","tropical"] }
+    ];
 
-    <!-- Dynamic JSON Script -->
-    <script>
-        fetch('api.json')
-        .then(response => response.json())
-        .then(data => {
-            displayBeaches(data.beaches);
-            displayTemples(data.temples);
-            displayCountries(data.countries);
-        })
-        .catch(error => console.error('Error fetching JSON:', error));
+    const searchBtn = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.getElementById("searchResults");
+    const resultsGrid = document.getElementById("resultsGrid");
 
-        function createCard(item) {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-                <img src="${item.imageUrl}" alt="${item.name}">
-                <h3>${item.name}</h3>
-                <p>${item.description}</p>
-            `;
-            return card;
-        }
+    function normalizeInput(input) {
+      let normalized = input.trim().toLowerCase();
+      if (normalized.endsWith("s")) normalized = normalized.slice(0, -1);
+      return normalized;
+    }
 
-        function displayBeaches(beaches) {
-            const container = document.getElementById('beachContainer');
-            beaches.forEach(beach => container.appendChild(createCard(beach)));
-        }
+    searchBtn.addEventListener("click", function() {
+      const query = normalizeInput(searchInput.value);
+      resultsGrid.innerHTML = "";
 
-        function displayTemples(temples) {
-            const container = document.getElementById('templeContainer');
-            temples.forEach(temple => container.appendChild(createCard(temple)));
-        }
+      if(query === "") { alert("Please enter a keyword to search."); return; }
 
-        function displayCountries(countries) {
-            const container = document.getElementById('countryContainer');
-            countries.forEach(country => {
-                country.cities.forEach(city => container.appendChild(createCard(city)));
-            });
-        }
+      const filtered = destinations.filter(dest =>
+        dest.keywords.some(keyword => normalizeInput(keyword) === query)
+      );
 
-        function searchRecommendations() {
-            const keyword = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                card.style.display = text.includes(keyword) ? 'block' : 'none';
-            });
-        }
+      if(filtered.length === 0) {
+        resultsGrid.innerHTML = "<p>No results found for '" + searchInput.value + "'</p>";
+      } else {
+        filtered.forEach(dest => {
+          const card = document.createElement("div");
+          card.className = "destination-card";
+          card.innerHTML = `<h3>${dest.name}</h3><p>${dest.description}</p>`;
+          resultsGrid.appendChild(card);
+        });
+      }
 
-        function resetSearch() {
-            document.getElementById('searchInput').value = '';
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => card.style.display = 'block');
-        }
-    </script>
+      searchResults.style.display = "block";
+    });
+  </script>
+
 
 </body>
 </html>
