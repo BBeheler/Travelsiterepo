@@ -8,35 +8,66 @@ body {
 }
 
 /* Navigation Bar */
-nav {
-    background-color: rgba(0, 123, 255, 0.9);
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
     padding: 10px 20px;
+    color: white;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav li {
-    margin: 0 15px;
-}
-
-nav a {
+.navbar a {
     color: white;
     text-decoration: none;
+    margin-right: 15px;
     font-weight: bold;
     transition: 0.3s;
 }
 
-nav a:hover {
+.navbar a:hover {
     text-decoration: underline;
+}
+
+.nav-right input[type="text"] {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 5px;
+}
+
+.nav-right button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #0056b3;
+    color: white;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.nav-right button:hover {
+    background-color: #003f7f;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-right {
+        margin-top: 10px;
+        width: 100%;
+    }
+    .nav-right input, .nav-right button {
+        margin-right: 0;
+        margin-bottom: 5px;
+        width: 100%;
+    }
 }
 
 /* Hero Section (Home Background) */
