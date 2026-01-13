@@ -7,9 +7,68 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* About Page Specific Styles */
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+    nav {
+      background-color: #1e90ff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .nav-links a {
+      color: white;
+      margin-right: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    nav .nav-links a:hover {
+      text-decoration: underline;
+      color: #ffd700;
+    }
+
+    /* HEADER */
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #f4f6f8; /* light background */
+      color: #1e90ff;
+      border-bottom: 2px solid #1e90ff;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* SECTIONS */
     section {
-      padding: 50px 50px;
+      padding: 40px 50px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -17,91 +76,114 @@
     h2 {
       color: #1e90ff;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+      font-size: 2rem;
     }
 
-    /* Awards Grid */
-    .awards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+    p {
+      text-align: center;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto 20px auto;
+    }
+
+    /* Awards & Achievements */
+    .awards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .award-card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      flex: 1 1 250px;
       text-align: center;
     }
 
-    .award-card, .testimonial-card, .team-member {
+    /* Testimonials */
+    .testimonials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .testimonial-card {
       background-color: white;
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .award-card:hover, .testimonial-card:hover, .team-member:hover {
-      transform: translateY(-5px);
-    }
-
-    .award-card i {
-      font-size: 2.5rem;
-      color: #1e90ff;
-      margin-bottom: 15px;
-    }
-
-    /* Testimonials Grid */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      flex: 1 1 250px;
     }
 
     .testimonial-card p {
       font-style: italic;
-      margin-bottom: 15px;
     }
 
     .testimonial-card h4 {
-      margin: 0;
-      font-weight: 600;
+      margin-top: 15px;
       color: #1e90ff;
     }
 
-    /* Team Grid */
+    /* Team */
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .team-member {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       text-align: center;
     }
 
-    .team-member img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-
     .team-member h4 {
-      margin: 0;
+      margin: 10px 0 5px 0;
       color: #1e90ff;
     }
 
     .team-member p {
-      font-size: 0.95rem;
+      margin: 0;
       color: #555;
     }
 
-    .company-info p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      max-width: 800px;
-      margin: 0 auto 20px auto;
+    /* Footer */
+    footer {
+      background-color: #1e90ff;
+      color: white;
       text-align: center;
+      padding: 25px 50px;
+      margin-top: 50px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        padding: 15px 20px;
+      }
+
+      nav .nav-links {
+        margin-bottom: 10px;
+      }
+
+      section {
+        padding: 30px 20px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- NAVBAR -->
   <nav>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -110,87 +192,80 @@
     </div>
   </nav>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header>
     <h1>About Destination Station</h1>
     <p>Learn more about our mission, achievements, and the amazing team that makes it all happen.</p>
   </header>
 
-  <!-- Company Info -->
-  <section class="company-info">
-    <h2>Our Story</h2>
-    <p>Founded in 2015, Destination Station has been connecting travelers with unforgettable experiences across the globe. Our mission is to inspire adventure and provide a seamless travel planning experience for explorers of all kinds.</p>
-    <p>With a dedicated team of travel enthusiasts, we curate top destinations, cultural experiences, and hidden gems to make your trips truly remarkable.</p>
+  <!-- ABOUT US -->
+  <section>
+    <h2>Our Mission</h2>
+    <p>Destination Station is dedicated to helping travelers explore the world, discover amazing destinations, and experience different cultures with ease and excitement.</p>
   </section>
 
-  <!-- Awards & Achievements -->
-  <section class="awards">
+  <!-- AWARDS & ACHIEVEMENTS -->
+  <section>
     <h2>Awards & Achievements</h2>
-    <div class="awards-grid">
+    <div class="awards">
       <div class="award-card">
-        <i class="fas fa-trophy"></i>
-        <h4>Best Travel Website 2021</h4>
-        <p>Recognized for excellence in user experience and travel content.</p>
+        <h4>Best Travel Blog 2024</h4>
+        <p>Recognized for outstanding content and travel guides.</p>
       </div>
       <div class="award-card">
-        <i class="fas fa-award"></i>
-        <h4>Top Travel Guide 2022</h4>
-        <p>For delivering the most comprehensive and reliable travel guides.</p>
+        <h4>Top Travel Agency Award</h4>
+        <p>Honored for exceptional customer service and itineraries.</p>
       </div>
       <div class="award-card">
-        <i class="fas fa-globe"></i>
-        <h4>Global Travel Excellence</h4>
-        <p>Honored for promoting sustainable and cultural travel worldwide.</p>
+        <h4>Community Travel Leader</h4>
+        <p>Celebrated for promoting sustainable and local travel experiences.</p>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <h2>What Our Travelers Say</h2>
-    <div class="testimonials-grid">
+  <!-- TESTIMONIALS -->
+  <section>
+    <h2>Testimonials</h2>
+    <div class="testimonials">
       <div class="testimonial-card">
-        <p>"Destination Station made planning my trip to Bali effortless! The guides and tips were invaluable."</p>
-        <h4>- Sarah L.</h4>
+        <p>"Destination Station made our honeymoon unforgettable. Highly recommend!"</p>
+        <h4>- Sarah & Tom</h4>
       </div>
       <div class="testimonial-card">
-        <p>"Amazing customer support and top-notch travel recommendations. I’ll definitely use them again!"</p>
-        <h4>- Michael B.</h4>
+        <p>"Excellent travel guides and very helpful customer support. Loved every trip!"</p>
+        <h4>- Mark L.</h4>
       </div>
       <div class="testimonial-card">
-        <p>"The team at Destination Station truly understands travelers’ needs. Highly recommend!"</p>
+        <p>"I discovered hidden gems thanks to Destination Station’s recommendations."</p>
         <h4>- Priya S.</h4>
       </div>
     </div>
   </section>
 
-  <!-- Meet the Team -->
-<section class="team">
-  <h2>Meet Our Team</h2>
-  <div class="team-grid">
-    <div class="team-member">
-      <h4>Jane Doe</h4>
-      <p>Founder & CEO</p>
+  <!-- MEET THE TEAM -->
+  <section class="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <h4>Jane Doe</h4>
+        <p>Founder & CEO</p>
+      </div>
+      <div class="team-member">
+        <h4>John Smith</h4>
+        <p>Head of Operations</p>
+      </div>
+      <div class="team-member">
+        <h4>Emily Johnson</h4>
+        <p>Marketing Lead</p>
+      </div>
+      <div class="team-member">
+        <h4>David Lee</h4>
+        <p>Travel Expert</p>
+      </div>
     </div>
+  </section>
 
-    <div class="team-member">
-      <h4>John Smith</h4>
-      <p>Head of Operations</p>
-    </div>
-
-    <div class="team-member">
-      <h4>Emily Johnson</h4>
-      <p>Marketing Lead</p>
-    </div>
-
-    <div class="team-member">
-      <h4>David Lee</h4>
-      <p>Travel Expert</p>
-    </div>
-  </div>
-</section>
-
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     &copy; 2026 Destination Station. All rights reserved.
   </footer>
