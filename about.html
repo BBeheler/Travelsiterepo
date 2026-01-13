@@ -7,59 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f6f8;
-      color: #333;
-    }
-
-    nav {
-      background-color: #1e90ff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 50px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav .nav-links a {
-      color: white;
-      margin-right: 25px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    nav .nav-links a:hover {
-      color: #ffd700;
-      text-decoration: underline;
-    }
-
-    header {
-      text-align: center;
-      padding: 80px 20px 50px 20px;
-      background: linear-gradient(135deg, #1e90ff 0%, #00c6ff 100%);
-      color: white;
-      border-bottom-left-radius: 50px;
-      border-bottom-right-radius: 50px;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
+    /* About Page Specific Styles */
     section {
       padding: 50px 50px;
       max-width: 1200px;
@@ -72,16 +20,7 @@
       margin-bottom: 30px;
     }
 
-    /* Company Info */
-    .company-info p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      max-width: 800px;
-      margin: 0 auto 20px auto;
-      text-align: center;
-    }
-
-    /* Awards */
+    /* Awards Grid */
     .awards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -89,7 +28,7 @@
       text-align: center;
     }
 
-    .award-card {
+    .award-card, .testimonial-card, .team-member {
       background-color: white;
       border-radius: 15px;
       padding: 25px;
@@ -97,7 +36,7 @@
       transition: transform 0.3s ease;
     }
 
-    .award-card:hover {
+    .award-card:hover, .testimonial-card:hover, .team-member:hover {
       transform: translateY(-5px);
     }
 
@@ -107,19 +46,11 @@
       margin-bottom: 15px;
     }
 
-    /* Testimonials */
+    /* Testimonials Grid */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 25px;
-    }
-
-    .testimonial-card {
-      background-color: white;
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      position: relative;
     }
 
     .testimonial-card p {
@@ -133,24 +64,12 @@
       color: #1e90ff;
     }
 
-    /* Team */
+    /* Team Grid */
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 25px;
       text-align: center;
-    }
-
-    .team-member {
-      background-color: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .team-member:hover {
-      transform: translateY(-5px);
     }
 
     .team-member img {
@@ -171,19 +90,12 @@
       color: #555;
     }
 
-    footer {
-      background-color: #1e90ff;
-      color: white;
+    .company-info p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 20px auto;
       text-align: center;
-      padding: 25px 50px;
-      margin-top: 50px;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      section {
-        padding: 40px 20px;
-      }
     }
   </style>
 </head>
