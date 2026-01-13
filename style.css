@@ -82,6 +82,20 @@ nav {
   background-color: #104e8b;
 }
 
+#clearBtn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ff4500; /* red-orange for clear */
+  color: white;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+#clearBtn:hover {
+  background-color: #cc3700;
+}
+
 /* ===========================
    MAIN CONTAINER
    =========================== */
