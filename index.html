@@ -4,350 +4,133 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Destination Station</title>
+
+  <!-- External CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f6f8;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* NAVBAR */
-    nav {
-      background-color: #1e90ff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 50px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav .nav-links a {
-      color: white;
-      margin-right: 25px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    nav .nav-links a:hover {
-      text-decoration: underline;
-      color: #ffd700;
-    }
-
-    /* SEARCH BAR */
-    .nav-search {
-      display: flex;
-      align-items: center;
-      background-color: white;
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-
-    .nav-search input {
-      padding: 8px 15px;
-      border: none;
-      outline: none;
-      width: 200px;
-      font-size: 0.95rem;
-    }
-
-    .nav-search button {
-      padding: 8px 15px;
-      border: none;
-      background-color: #1e90ff;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    .nav-search button:hover {
-      background-color: #0d6efd;
-    }
-
-    /* HEADER */
-    header {
-      text-align: center;
-      padding: 80px 20px 50px 20px;
-      background: linear-gradient(135deg, #1e90ff 0%, #00c6ff 100%);
-      color: white;
-      border-bottom-left-radius: 50px;
-      border-bottom-right-radius: 50px;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
-      font-weight: 700;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* DESTINATIONS GRID */
-    .destination-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      padding: 40px 50px;
-    }
-
-    /* Make each card square */
-    .destination-card {
-      background-color: white;
-      border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 1 / 1; /* Makes the card square */
-      text-align: center;
-    }
-
-    .destination-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-    }
-
-    .destination-card img {
-      width: 100%;
-      height: 50%;
-      object-fit: cover; /* Fill half the card with the image */
-      border-bottom: 1px solid #ddd;
-    }
-
-    .destination-card h3 {
-      color: #1e90ff;
-      margin: 10px 0 5px 0;
-      font-size: 1.2rem;
-    }
-
-    .destination-card p {
-      font-size: 0.9rem;
-      color: #555;
-      padding: 0 10px;
-      flex: 1;
-      overflow: auto; /* Allow scrolling if description is too long */
-    }
-
-    /* SEARCH RESULTS */
-    #searchResults {
-      padding: 40px 50px;
-      background-color: #f9f9f9;
-    }
-
-    #searchResults h2 {
-      color: #1e90ff;
-      margin-bottom: 25px;
-      font-size: 1.8rem;
-      text-align: center;
-    }
-
-    #searchResults p {
-      text-align: center;
-      font-size: 1.1rem;
-      color: #555;
-    }
-
-    /* FOOTER */
-    footer {
-      background-color: #1e90ff;
-      color: white;
-      text-align: center;
-      padding: 25px 50px;
-      margin-top: 50px;
-      font-size: 0.9rem;
-    }
-
-    /* MEDIA QUERIES */
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        padding: 15px 20px;
-      }
-
-      .nav-search {
-        margin-top: 10px;
-        width: 100%;
-      }
-
-      .nav-search input {
-        flex: 1;
-        width: 100%;
-      }
-
-      header h1 {
-        font-size: 2rem;
-      }
-
-      header p {
-        font-size: 1rem;
-      }
-    }
-  </style>
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact Us</a>
-    </div>
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
 
-    <div class="nav-search">
-      <input type="text" id="searchInput" placeholder="Search destinations...">
-      <button id="searchBtn">Search</button>
-    </div>
-  </nav>
+  <div class="nav-search">
+    <input type="text" id="searchInput" placeholder="Search destinations...">
+    <button id="searchBtn">Search</button>
+  </div>
+</nav>
 
-  <!-- HEADER -->
-  <header>
-    <h1>Explore the World with Destination Station</h1>
-    <p>Discover top destinations, beaches, temples, and countries worldwide.</p>
-  </header>
+<!-- HEADER -->
+<header>
+  <h1>Explore the World with Destination Station</h1>
+  <p>Discover top destinations, beaches, temples, and countries worldwide.</p>
+</header>
 
-  <!-- Recommendations heading -->
-  <section style="text-align:center; padding: 30px 0;">
-    <h2 style="color:white; font-size:2rem; margin:0;">Check out our recommendations below</h2>
-  </section>
+<!-- RECOMMENDATIONS HEADING -->
+<section style="text-align:center; padding: 30px 0;">
+  <h2 style="color:#1e90ff; font-size:2rem; margin:0;">
+    Check out our recommendations below
+  </h2>
+</section>
 
-  <!-- Grid to hold all destinations -->
-  <section class="destination-grid" id="destinationGrid"></section>
+<!-- FEATURED DESTINATIONS (ONLY 4) -->
+<section class="destination-grid" id="destinationGrid"></section>
 
-  <!-- SEARCH RESULTS -->
-  <section id="searchResults" style="display:none;">
-    <h2>Search Results</h2>
-    <div id="resultsGrid" class="destination-grid"></div>
-  </section>
+<!-- SEARCH RESULTS -->
+<section id="searchResults" style="display:none;">
+  <h2 style="text-align:center; color:#1e90ff;">Search Results</h2>
+  <div id="resultsGrid" class="destination-grid"></div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    &copy; 2026 Destination Station. All rights reserved.
-  </footer>
+<!-- FOOTER -->
+<footer>
+  &copy; 2026 Destination Station. All rights reserved.
+</footer>
 
-  <!-- JAVASCRIPT -->
-  <script>
-    async function loadDestinations() {
-      try {
-        const response = await fetch('api.json');
-        const data = await response.json();
+<!-- JAVASCRIPT -->
+<script>
+  let allDestinations = [];
 
-        const destinationGrid = document.getElementById('destinationGrid');
+  async function loadDestinations() {
+    try {
+      const response = await fetch('api.json');
+      const data = await response.json();
 
-        // Countries and cities
-        data.countries.forEach(country => {
-          country.cities.forEach(city => {
-            const card = document.createElement('div');
-            card.className = 'destination-card';
-            card.innerHTML = `
-              <img src="${city.imageUrl}" alt="${city.name}">
-              <h3>${city.name}</h3>
-              <p>${city.description}</p>
-            `;
-            destinationGrid.appendChild(card);
-          });
-        });
+      // Flatten all destinations
+      data.countries.forEach(country =>
+        country.cities.forEach(city => allDestinations.push(city))
+      );
+      allDestinations.push(...data.temples);
+      allDestinations.push(...data.beaches);
 
-        // Temples
-        data.temples.forEach(temple => {
-          const card = document.createElement('div');
-          card.className = 'destination-card';
-          card.innerHTML = `
-            <img src="${temple.imageUrl}" alt="${temple.name}">
-            <h3>${temple.name}</h3>
-            <p>${temple.description}</p>
-          `;
-          destinationGrid.appendChild(card);
-        });
+      // Show ONLY first 4 on homepage
+      const featured = allDestinations.slice(0, 4);
+      const grid = document.getElementById('destinationGrid');
 
-        // Beaches
-        data.beaches.forEach(beach => {
-          const card = document.createElement('div');
-          card.className = 'destination-card';
-          card.innerHTML = `
-            <img src="${beach.imageUrl}" alt="${beach.name}">
-            <h3>${beach.name}</h3>
-            <p>${beach.description}</p>
-          `;
-          destinationGrid.appendChild(card);
-        });
+      featured.forEach(dest => {
+        const card = document.createElement('div');
+        card.className = 'destination-card';
+        card.innerHTML = `
+          <img src="${dest.imageUrl}" alt="${dest.name}">
+          <h3>${dest.name}</h3>
+          <p>${dest.description}</p>
+        `;
+        grid.appendChild(card);
+      });
 
-      } catch (error) {
-        console.error('Error loading destinations:', error);
-      }
+    } catch (error) {
+      console.error('Error loading destinations:', error);
+    }
+  }
+
+  loadDestinations();
+
+  /* SEARCH FUNCTION */
+  const searchBtn = document.getElementById("searchBtn");
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+  const resultsGrid = document.getElementById("resultsGrid");
+
+  searchBtn.addEventListener("click", function () {
+    const query = searchInput.value.trim().toLowerCase();
+    resultsGrid.innerHTML = "";
+
+    if (!query) {
+      alert("Please enter a search term.");
+      return;
     }
 
-    loadDestinations();
+    const matches = allDestinations.filter(dest =>
+      dest.name.toLowerCase().includes(query) ||
+      dest.description.toLowerCase().includes(query)
+    );
 
-    // SEARCH FUNCTIONALITY
-    const searchBtn = document.getElementById("searchBtn");
-    const searchInput = document.getElementById("searchInput");
-    const searchResults = document.getElementById("searchResults");
-    const resultsGrid = document.getElementById("resultsGrid");
-
-    function normalizeInput(input) {
-      let normalized = input.trim().toLowerCase();
-      if (normalized.endsWith("s")) normalized = normalized.slice(0, -1);
-      return normalized;
+    if (matches.length === 0) {
+      resultsGrid.innerHTML = "<p style='text-align:center;'>No results found.</p>";
+    } else {
+      matches.forEach(dest => {
+        const card = document.createElement("div");
+        card.className = "destination-card";
+        card.innerHTML = `
+          <img src="${dest.imageUrl}" alt="${dest.name}">
+          <h3>${dest.name}</h3>
+          <p>${dest.description}</p>
+        `;
+        resultsGrid.appendChild(card);
+      });
     }
 
-    searchBtn.addEventListener("click", async function() {
-      const query = normalizeInput(searchInput.value);
-      resultsGrid.innerHTML = "";
-
-      if(query === "") { alert("Please enter a keyword to search."); return; }
-
-      try {
-        const response = await fetch('api.json');
-        const data = await response.json();
-        let allDestinations = [];
-
-        data.countries.forEach(c => allDestinations.push(...c.cities));
-        allDestinations.push(...data.temples);
-        allDestinations.push(...data.beaches);
-
-        const filtered = allDestinations.filter(dest =>
-          dest.name.toLowerCase().includes(query) || dest.description.toLowerCase().includes(query)
-        );
-
-        if(filtered.length === 0) {
-          resultsGrid.innerHTML = "<p>No results found for '" + searchInput.value + "'</p>";
-        } else {
-          filtered.forEach(dest => {
-            const card = document.createElement("div");
-            card.className = "destination-card";
-            card.innerHTML = `<img src="${dest.imageUrl}" alt="${dest.name}"><h3>${dest.name}</h3><p>${dest.description}</p>`;
-            resultsGrid.appendChild(card);
-          });
-        }
-
-        searchResults.style.display = "block";
-
-      } catch (error) {
-        console.error('Error searching destinations:', error);
-      }
-    });
-  </script>
+    searchResults.style.display = "block";
+  });
+</script>
 
 </body>
 </html>
