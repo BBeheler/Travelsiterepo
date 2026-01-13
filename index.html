@@ -24,16 +24,22 @@
 
    <!-- Hero Section with Inline Background -->
 <header class="hero" 
-        style="background-image: url('https://www.nationalgeographic.com/content/dam/expeditions/destinations/australia-pacific/ocean/Pearls-of-the-Pacific/hero-pearls-of-the-pacific.jpg'); 
+        style="background-image: url('https://uploads.onecompiler.io/44872r4rd/4486yzjvy/beach%20background.jpg'); 
                background-size: cover; 
                background-position: center; 
                background-repeat: no-repeat; 
-               height: 70vh; 
+               height: 100vh; 
+               min-height: 100vh;
+               width: 100%;
                display: flex; 
                align-items: center; 
                justify-content: center; 
                position: relative;">
-    <div class="hero-text">
+    <!-- Overlay -->
+    <div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.4); z-index:0;"></div>
+
+    <!-- Text -->
+    <div class="hero-text" style="position: relative; z-index:1; text-align:center; color:white;">
         <h1>Welcome to Your Ultimate Travel Guide!</h1>
         <p>Explore the best beaches, temples, and destinations around the world.</p>
     </div>
