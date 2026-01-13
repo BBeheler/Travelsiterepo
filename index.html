@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* GENERAL STYLING */
     body {
       font-family: 'Poppins', Arial, sans-serif;
       margin: 0;
@@ -103,38 +102,50 @@
     /* DESTINATIONS GRID */
     .destination-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 25px;
       padding: 40px 50px;
     }
 
+    /* Make each card square */
     .destination-card {
       background-color: white;
       border-radius: 15px;
-      padding: 15px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 1 / 1; /* Makes the card square */
       text-align: center;
+    }
+
+    .destination-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
     }
 
     .destination-card img {
       width: 100%;
-      max-height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      height: 50%;
+      object-fit: cover; /* Fill half the card with the image */
+      border-bottom: 1px solid #ddd;
     }
 
     .destination-card h3 {
       color: #1e90ff;
       margin: 10px 0 5px 0;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
 
     .destination-card p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: #555;
+      padding: 0 10px;
+      flex: 1;
+      overflow: auto; /* Allow scrolling if description is too long */
     }
 
     /* SEARCH RESULTS */
@@ -243,7 +254,7 @@
 
         const destinationGrid = document.getElementById('destinationGrid');
 
-        // Loop through countries and their cities
+        // Countries and cities
         data.countries.forEach(country => {
           country.cities.forEach(city => {
             const card = document.createElement('div');
@@ -257,7 +268,7 @@
           });
         });
 
-        // Loop through temples
+        // Temples
         data.temples.forEach(temple => {
           const card = document.createElement('div');
           card.className = 'destination-card';
@@ -269,7 +280,7 @@
           destinationGrid.appendChild(card);
         });
 
-        // Loop through beaches
+        // Beaches
         data.beaches.forEach(beach => {
           const card = document.createElement('div');
           card.className = 'destination-card';
