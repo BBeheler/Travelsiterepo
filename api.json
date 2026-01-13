@@ -38,12 +38,12 @@
       "cities": [
         {
           "name": "Rio de Janeiro, Brazil",
-          "imageUrl": "images/rio.jpg",
+          "imageUrl": "images/janeiro.jpg",
           "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks."
         },
         {
           "name": "São Paulo, Brazil",
-          "imageUrl": "images/sao-paulo.jpg",
+          "imageUrl": "images/paulo.jpg",
           "description": "The financial hub with diverse culture, arts, and a vibrant nightlife."
         }
       ]
@@ -52,13 +52,13 @@
   "temples": [
     {
       "name": "Angkor Wat, Cambodia",
-      "imageUrl": "images/angkorwat.jpg",
+      "imageUrl": "images/angkor.jpg",
       "description": "An ancient temple complex and UNESCO World Heritage site."
     },
     {
       "id": 2,
       "name": "Taj Mahal, India",
-      "imageUrl": "images/taj-mahal.jpg",
+      "imageUrl": "images/taj.jpg",
       "description": "An iconic symbol of love and a masterpiece of Mughal architecture."
     }
   ],
@@ -66,7 +66,7 @@
     {
       "id": 1,
       "name": "Bora Bora, French Polynesia",
-      "imageUrl": "images/bora-bora.jpg",
+      "imageUrl": "images/bora.jpg",
       "description": "An island known for its stunning turquoise waters and luxurious overwater bungalows."
     },
     {
