@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* GENERAL STYLING */
     body {
       font-family: 'Poppins', Arial, sans-serif;
       margin: 0;
@@ -134,95 +133,24 @@
       color: #555;
     }
 
-    <!-- SEARCH RESULTS -->
-<section id="searchResults" style="display:none;">
-  <h2>Search Results</h2>
-  <div id="resultsGrid" class="destination-grid"></div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  &copy; 2026 Destination Station. All rights reserved.
-</footer>
-
-<!-- JAVASCRIPT SEARCH (fetch from api.json) -->
-<script>
-  // ----- Initialize destinations array -----
-  let destinations = [];
-
-  // ----- Fetch destinations from api.json -----
-  fetch('api.json')
-    .then(response => {
-      if (!response.ok) throw new Error('Failed to fetch destinations');
-      return response.json();
-    })
-    .then(data => {
-      destinations = data; // store fetched data
-      console.log('Destinations loaded:', destinations);
-
-      // Optionally, display all destinations on page load
-      const resultsGrid = document.getElementById("resultsGrid");
-      destinations.forEach(dest => {
-        const card = document.createElement("div");
-        card.className = "destination-card";
-        card.innerHTML = `<h3>${dest.name}</h3><p>${dest.description}</p>`;
-        resultsGrid.appendChild(card);
-      });
-      document.getElementById("searchResults").style.display = "block";
-    })
-    .catch(error => {
-      console.error('Error loading destinations:', error);
-    });
-
-  // ----- Get DOM elements -----
-  const searchBtn = document.getElementById("searchBtn");
-  const searchInput = document.getElementById("searchInput");
-  const searchResults = document.getElementById("searchResults");
-  const resultsGrid = document.getElementById("resultsGrid");
-
-  // ----- Helper function to normalize input -----
-  function normalizeInput(input) {
-    let normalized = input.trim().toLowerCase();
-    if (normalized.endsWith("s")) normalized = normalized.slice(0, -1);
-    return normalized;
-  }
-
-  // ----- Search button click handler -----
-  searchBtn.addEventListener("click", function() {
-    if (destinations.length === 0) {
-      alert("Destinations are still loading. Please try again in a moment.");
-      return;
+    /* SEARCH RESULTS */
+    #searchResults {
+      padding: 40px 50px;
+      background-color: #f9f9f9;
     }
 
-    const query = normalizeInput(searchInput.value);
-    resultsGrid.innerHTML = ""; // clear previous results
-
-    if (query === "") {
-      alert("Please enter a keyword to search.");
-      return;
+    #searchResults h2 {
+      color: #1e90ff;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      text-align: center;
     }
 
-    // Filter destinations based on keywords
-    const filtered = destinations.filter(dest =>
-      dest.keywords.some(keyword => normalizeInput(keyword) === query)
-    );
-
-    // Display results
-    if (filtered.length === 0) {
-      resultsGrid.innerHTML = `<p>No results found for '${searchInput.value}'</p>`;
-    } else {
-      filtered.forEach(dest => {
-        const card = document.createElement("div");
-        card.className = "destination-card";
-        card.innerHTML = `<h3>${dest.name}</h3><p>${dest.description}</p>`;
-        resultsGrid.appendChild(card);
-      });
+    #searchResults p {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #555;
     }
-
-    // Show results section
-    searchResults.style.display = "block";
-  });
-</script>
 
     /* FOOTER */
     footer {
@@ -258,6 +186,7 @@
       header p {
         font-size: 1rem;
       }
+    }
   </style>
 </head>
 <body>
@@ -282,22 +211,6 @@
     <p>Discover top destinations, beaches, temples, and countries worldwide.</p>
   </header>
 
-  <!-- DESTINATIONS GRID -->
-  <section class="destination-grid">
-    <div class="destination-card">
-      <h3>Bali, Indonesia</h3>
-      <p>Tropical paradise with beaches, jungles, and vibrant culture.</p>
-    </div>
-    <div class="destination-card">
-      <h3>Paris, France</h3>
-      <p>The city of lights, romance, and iconic landmarks like the Eiffel Tower.</p>
-    </div>
-    <div class="destination-card">
-      <h3>Angkor Wat, Cambodia</h3>
-      <p>Majestic temple complex and one of the largest religious monuments in the world.</p>
-    </div>
-  </section>
-
   <!-- SEARCH RESULTS -->
   <section id="searchResults" style="display:none;">
     <h2>Search Results</h2>
@@ -309,39 +222,67 @@
     &copy; 2026 Destination Station. All rights reserved.
   </footer>
 
-  <!-- JAVASCRIPT SEARCH -->
+  <!-- JAVASCRIPT SEARCH (fetch from api.json) -->
   <script>
-    const destinations = [
-      { name: "Paris, France", type: "city", description: "The city of lights, romance, and iconic landmarks like the Eiffel Tower.", keywords: ["paris","city","romance","france"] },
-      { name: "Bali, Indonesia", type: "beach", description: "A tropical paradise with pristine beaches, lush jungles, and vibrant culture.", keywords: ["bali","beach","beaches","tropical","indonesia"] },
-      { name: "Tokyo, Japan", type: "city", description: "A perfect blend of tradition and modernity with bustling streets and culture.", keywords: ["tokyo","city","temple","temples","japan"] },
-      { name: "Angkor Wat, Cambodia", type: "temple", description: "A majestic temple complex and one of the largest religious monuments in the world.", keywords: ["angkor wat","temple","temples","cambodia"] },
-      { name: "Maldives", type: "beach", description: "Pristine white sand beaches and crystal-clear waters.", keywords: ["maldives","beach","beaches","island","tropical"] }
-    ];
+    let destinations = [];
 
+    // Fetch destinations from api.json
+    fetch('api.json')
+      .then(response => {
+        if (!response.ok) throw new Error('Failed to fetch destinations');
+        return response.json();
+      })
+      .then(data => {
+        destinations = data;
+
+        // Display all destinations initially
+        const resultsGrid = document.getElementById("resultsGrid");
+        destinations.forEach(dest => {
+          const card = document.createElement("div");
+          card.className = "destination-card";
+          card.innerHTML = `<h3>${dest.name}</h3><p>${dest.description}</p>`;
+          resultsGrid.appendChild(card);
+        });
+        document.getElementById("searchResults").style.display = "block";
+      })
+      .catch(error => {
+        console.error('Error loading destinations:', error);
+      });
+
+    // DOM elements
     const searchBtn = document.getElementById("searchBtn");
     const searchInput = document.getElementById("searchInput");
     const searchResults = document.getElementById("searchResults");
     const resultsGrid = document.getElementById("resultsGrid");
 
+    // Normalize input
     function normalizeInput(input) {
       let normalized = input.trim().toLowerCase();
       if (normalized.endsWith("s")) normalized = normalized.slice(0, -1);
       return normalized;
     }
 
+    // Search functionality
     searchBtn.addEventListener("click", function() {
+      if (destinations.length === 0) {
+        alert("Destinations are still loading. Please try again in a moment.");
+        return;
+      }
+
       const query = normalizeInput(searchInput.value);
       resultsGrid.innerHTML = "";
 
-      if(query === "") { alert("Please enter a keyword to search."); return; }
+      if (query === "") {
+        alert("Please enter a keyword to search.");
+        return;
+      }
 
       const filtered = destinations.filter(dest =>
         dest.keywords.some(keyword => normalizeInput(keyword) === query)
       );
 
-      if(filtered.length === 0) {
-        resultsGrid.innerHTML = "<p>No results found for '" + searchInput.value + "'</p>";
+      if (filtered.length === 0) {
+        resultsGrid.innerHTML = `<p>No results found for '${searchInput.value}'</p>`;
       } else {
         filtered.forEach(dest => {
           const card = document.createElement("div");
@@ -354,7 +295,6 @@
       searchResults.style.display = "block";
     });
   </script>
-
 
 </body>
 </html>
